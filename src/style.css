@@ -168,8 +168,8 @@ body {
 
 }
 
-.scard :hover{
-  border: .5px solid rgb(224, 234, 240);
+.scard:hover{
+  border: 1px solid rgb(224, 234, 240);
 }
 .scard img {
   width: inherit;
