@@ -121,7 +121,7 @@ body {
 .hero-3d {
   height: clamp(360px, 62vh, 620px);
   min-height: 360px;
-  background-image: url(logo.jpg);
+  background-image: url("../public/bedge.jpg");
 }
 
 .hero-3d canvas {
