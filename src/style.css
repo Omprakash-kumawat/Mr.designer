@@ -121,7 +121,7 @@ body {
 .hero-3d {
   height: clamp(360px, 62vh, 620px);
   min-height: 360px;
-  background: linear-gradient(180deg, #fffdf9 0%, #f9f2ef 100%);
+  background-image: url(logo.jpg);
 }
 
 .hero-3d canvas {
