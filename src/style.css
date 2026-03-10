@@ -138,8 +138,12 @@ body {
 
 .wraper{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  /* flex-wrap: wrap; */
+   overflow-x: auto; 
+  justify-content: space-around;
+}
+.wrapper::-webkit-scrollbar {
+  height: 0px; /* increase scrollbar thickness */
 }
 
 .heading{
@@ -241,7 +245,7 @@ a{
   .scard{
     width: 300px;
     text-wrap: wrap;
-
+ 
 
 
   }
