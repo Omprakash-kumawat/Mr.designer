@@ -238,5 +238,12 @@ a{
 
 /* ------------------------------responsive for mobile----------------------------------- */
 @media (max-width: 360px){
+  .scard{
+    width: 300px;
+    text-wrap: wrap;
+
+
+
+  }
 
 }
