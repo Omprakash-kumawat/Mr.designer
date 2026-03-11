@@ -9,6 +9,7 @@ import Nav from "./components/Nav"
 import Services from "./components/Services"
 import Scard from "./components/Scard"
 import Layout from "./Layout"
+import Footer from "./components/Footer"
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(false)
@@ -39,7 +40,7 @@ export default function App() {
       <main>
         <section id="home" className="hero-3d">
           <Canvas camera={cameraSettings} dpr={[1, 1.5]}>
-            <color attach="background" args={["#d5e0e7"]} />
+            {/* <color attach="background" args={["#d5e0e7"]} /> */}
             <fog attach="fog" args={["#f6f1e8", 7.2, 11.2]} />
 
             <Rig
@@ -58,6 +59,9 @@ export default function App() {
           <Layout/>
 
      </main>
+     
+      <Footer/>
+     
     </div>
   )
 }

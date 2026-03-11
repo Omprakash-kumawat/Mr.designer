@@ -121,7 +121,12 @@ body {
 .hero-3d {
   height: clamp(360px, 62vh, 620px);
   min-height: 360px;
-  background-image: url("../public/bedge.jpg");
+  background-image: url("/Hero.jpg");
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 .hero-3d canvas {
@@ -142,9 +147,7 @@ body {
    overflow-x: auto; 
   justify-content: space-around;
 }
-.wrapper::-webkit-scrollbar {
-  height: 0px; /* increase scrollbar thickness */
-}
+
 
 .heading{
   font-size: x-large;
@@ -198,6 +201,24 @@ body {
 a{
   text-decoration: none;
 }
+
+
+
+
+
+.foot{
+   position: static;
+  bottom: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 2rem;
+  background: rgba(27, 19, 8, 1);
+  color: #f5ede2;
+  min-height: 40px;
+
+}
 /* ----------------------------responsive for tab------------------------------------------- */
 
 @media (max-width: 760px) {
@@ -245,9 +266,14 @@ a{
   .scard{
     width: 300px;
     text-wrap: wrap;
- 
-
-
   }
+  .wraper{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+   overflow-x: hidden; 
+  justify-content: center;
+  align-items: center;
+}
 
 }
