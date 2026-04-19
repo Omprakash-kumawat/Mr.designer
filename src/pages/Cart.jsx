@@ -24,7 +24,7 @@ export default function Cart() {
                 <img src={item.imageUrl || 'https://via.placeholder.com/150'} alt={item.name} style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '8px', marginRight: '1.5rem', border: '1px solid var(--border-color)' }} />
                 <div style={{ flex: 1 }}>
                   <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', fontWeight: 600 }}>{item.name}</h3>
-                  <p style={{ color: 'var(--primary-color)', marginBottom: '0.5rem', fontWeight: 600 }}>${Number(item.price).toFixed(2)}</p>
+                  <p style={{ color: 'var(--primary-color)', marginBottom: '0.5rem', fontWeight: 600 }}>Rs. {Number(item.price).toFixed(2)}</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <input 
                       type="number" 
@@ -38,7 +38,7 @@ export default function Cart() {
                   </div>
                 </div>
                 <div style={{ fontSize: '1.3rem', fontWeight: 'bold' }}>
-                  ${(item.price * item.quantity).toFixed(2)}
+                  Rs. {(item.price * item.quantity).toFixed(2)}
                 </div>
               </div>
             ))}
@@ -48,11 +48,11 @@ export default function Cart() {
             <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem' }}>Order Summary</h2>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', color: 'var(--text-muted)' }}>
               <span>Subtotal</span>
-              <span>${total.toFixed(2)}</span>
+              <span>Rs. {total.toFixed(2)}</span>
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', fontSize: '1.5rem', fontWeight: 'bold' }}>
               <span>Total</span>
-              <span className="text-gradient">${total.toFixed(2)}</span>
+              <span className="text-gradient">Rs. {total.toFixed(2)}</span>
             </div>
             <Link to="/checkout" className="btn-primary" style={{ display: 'block', width: '100%', padding: '1rem', fontSize: '1.1rem' }}>
               Proceed to Checkout

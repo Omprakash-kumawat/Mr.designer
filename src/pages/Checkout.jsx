@@ -78,7 +78,7 @@ export default function Checkout() {
         <div style={{ marginBottom: '2rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.4rem', fontWeight: 'bold' }}>
             <span>Total to pay:</span>
-            <span className="text-gradient">${total.toFixed(2)}</span>
+            <span className="text-gradient">Rs. {total.toFixed(2)}</span>
           </div>
         </div>
 
