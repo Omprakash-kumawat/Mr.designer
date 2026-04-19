@@ -1,9 +1,14 @@
 const Product = require('../models/Product');
+const { Op } = require('sequelize');
 
-// Get all products
+// Get all products (supports ?category= filter)
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Product.findAll();
+    const where = {};
+    if (req.query.category) {
+      where.category = { [Op.like]: req.query.category };
+    }
+    const products = await Product.findAll({ where });
     res.json(products);
   } catch (error) {
     console.error('Get All Products Error:', error);
