@@ -1,0 +1,47 @@
+# ========================
+# Node.js / Express
+# ========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (IMPORTANT)
+.env
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory
+coverage/
+
+# Build folders (React)
+build/
+dist/
+
+# Database
+*.sql
+*.sqlite
+*.db
+
+# Uploads / temp
+uploads/
+tmp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Optional cache
+.cache/

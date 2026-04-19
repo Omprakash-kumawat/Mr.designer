@@ -1,4 +1,7 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { AuthContext } from "../context/AuthContext"
+import { CartContext } from "../context/CartContext"
 
 const services = [
   "FLEX BANNER",
@@ -23,20 +26,34 @@ const toSlug = (text) =>
 
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { user, logout } = useContext(AuthContext)
+  const { cart } = useContext(CartContext)
+  const navigate = useNavigate()
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev)
   const closeMenu = () => setIsMenuOpen(false)
 
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+  }
+
   return (
     <header className="top-nav">
       <div className="logo">
-        <img id="logoimg" src="logo.jpg" alt="Mr.Designer" />
+        <Link to="/"><img id="logoimg" src="logo.jpg" alt="Mr.Designer" /></Link>
       </div>
 
       <nav className="nav-links">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#contact">Contact</a>
+        <Link to="/">Home</Link>
+        <Link to="/store">Store</Link>
+        <Link to="/cart">Cart ({cart.reduce((n, i) => n + i.quantity, 0)})</Link>
+        {user?.role === 'admin' && <Link to="/admin">Admin</Link>}
+        {user ? (
+          <button onClick={handleLogout} className="btn-outline" style={{ padding: '0.4rem 0.8rem', fontSize: '0.85rem' }}>Logout</button>
+        ) : (
+          <Link to="/login" className="btn-primary" style={{ padding: '0.4rem 0.8rem', color: '#1b1919', fontSize: '0.85rem' }}>Login</Link>
+        )}
       </nav>
 
       <div className="menu-wrap">

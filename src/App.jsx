@@ -1,67 +1,38 @@
-import { useEffect, useMemo, useState } from "react"
-import { Canvas } from "@react-three/fiber"
-import { Environment } from "@react-three/drei"
-import Rig from "./components/Rig"
-import Carousel from "./components/Carousel"
-import Banner from "./components/Banner"
-import "./util/bentPlaneGeometry"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Nav from "./components/Nav"
-import Services from "./components/Services"
-import Scard from "./components/Scard"
-import Layout from "./Layout"
 import Footer from "./components/Footer"
+import Home from "./pages/Home"
+import Login from "./pages/Login"
+import Signup from "./pages/Signup"
+import Store from "./pages/Store"
+import Cart from "./pages/Cart"
+import Checkout from "./pages/Checkout"
+import AdminDashboard from "./pages/AdminDashboard"
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 
 export default function App() {
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 768px)")
-
-    const updateMobileState = () => setIsMobile(mediaQuery.matches)
-
-    updateMobileState()
-    mediaQuery.addEventListener("change", updateMobileState)
-
-    return () => mediaQuery.removeEventListener("change", updateMobileState)
-  }, [])
-
-  const cameraSettings = useMemo(
-    () =>
-      isMobile
-        ? { position: [0, 0.45, 7.2], fov: 24 }
-        : { position: [0, 0.35, 8.6], fov: 18 },
-    [isMobile]
-  )
-
   return (
-    <div className="page">
-      <Nav />
-
-      <main>
-        <section id="home" className="hero-3d">
-          <Canvas camera={cameraSettings} dpr={[1, 1.5]}>
-            {/* <color attach="background" args={["#d5e0e7"]} /> */}
-            <fog attach="fog" args={["#f6f1e8", 7.2, 11.2]} />
-
-            <Rig
-              rotation={[0, 0, 0.15]}
-              pointerStrength={isMobile ? 1.2 : 1.8}
-              baseCameraY={isMobile ? 1.05 : 1.3}
-            >
-              <Carousel radius={isMobile ? 1.2 : 1.4} />
-            </Rig>
-            <Banner position={[0, isMobile ? -0.08 : -0.15, 0]} />
-
-            <Environment preset="sunset" blur={0.35} />
-          </Canvas>
-        </section>
-
-          <Layout/>
-
-     </main>
-     
-      <Footer/>
-     
-    </div>
-  )
+    <AuthProvider>
+      <CartProvider>
+        <Router>
+          <div className="page" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+          <Nav />
+          <main style={{ flex: 1 }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/store" element={<Store />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/admin" element={<AdminDashboard />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+        </Router>
+      </CartProvider>
+    </AuthProvider>
+  );
 }
